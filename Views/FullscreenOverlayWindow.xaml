@@ -74,8 +74,10 @@
     <Grid x:Name="RootGrid" Background="#0C0C12" ClipToBounds="True">
         
         <!-- Ultra-Optimized Deep Blurred Album Art Background Layer (0% continuous GPU shader overhead) -->
-        <Grid Margin="-20">
+        <Grid Margin="-20" ClipToBounds="True">
             <Image x:Name="BlurredBackgroundImage"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
                    Stretch="UniformToFill"
                    Opacity="0.45"
                    RenderOptions.BitmapScalingMode="Linear"/>
