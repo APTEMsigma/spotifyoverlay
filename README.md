@@ -6,6 +6,7 @@
 
 [![.NET 9.0](https://img.shields.io/badge/.NET-9.0-512BD4?style=flat&logo=dotnet)](https://dotnet.microsoft.com/)
 [![Windows](https://img.shields.io/badge/Platform-Windows_10%2B-0078D6?style=flat&logo=windows)](https://www.microsoft.com/windows)
+[![Portable](https://img.shields.io/badge/Release-Standalone_Portable-success.svg)](https://github.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <br/>
@@ -28,6 +29,7 @@
 
 ## ✨ Features
 
+- 📦 **100% Standalone & Portable**: Single executable file (`SpotifyOverlay.exe`) with zero dependencies — no .NET runtime or SDK installation required.
 - 🔄 **Ultra-Smooth Hardware-Accelerated Animation**: Smoothly spinning circular album art powered by `CompositionTarget.Rendering` delta-time animation with subpixel font rendering (zero jitter at any framerate).
 - 📜 **Continuous Infinite Marquee**: Seamless single-direction looping title scroll without jumps or truncation. Includes an option to switch to a static ellipsis mode (`...`).
 - 🎨 **Adaptive Color Tinting & Smudge Blur**: High-speed (< 1ms) album color extraction that dynamically tints the frosted glass card to match the current track.
@@ -37,8 +39,8 @@
   - Multi-monitor support: easily launch fullscreen mode on any connected display.
   - Clean, distraction-free interface with a hover-activated close button.
 - 📥 **System Tray Integration**:
-  - Runs in the background without cluttering the taskbar.
-  - Custom tray icon with context menu and track info tooltip.
+  - Runs quietly in the background without cluttering the taskbar.
+  - Custom tray icon with full context menu and track info tooltip.
   - Double-click to toggle overlay visibility.
 - 🚀 **Windows Startup Integration**: Enable or disable auto-launch with Windows in a single click from the context menu.
 - ⚡ **Custom Framerate Limiter (FPS)**: Choose between Auto (Native VSync), 30, 60, 120, 144, 240 FPS, or enter any custom value.
@@ -63,27 +65,22 @@
 ### Requirements
 - **Windows 10 (Build 19041+)** or **Windows 11**
 - **Spotify** desktop client (official installer or Microsoft Store app)
-- **.NET 9.0 Runtime** (only if running unbundled version; single-file build includes all dependencies)
+- *No additional runtimes or frameworks required!*
 
 ### Quick Start
-Run the pre-compiled standalone executable located in the root directory:
-```bash
-SpotifyOverlay.exe
-```
+1. Download **`SpotifyOverlay.exe`** from the [**Releases**](../../releases) page.
+2. Run `SpotifyOverlay.exe` directly — no installation needed.
 
 ### Build from Source
+If you prefer to compile from source:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/SpotifyOverlay.git
    cd SpotifyOverlay
    ```
-2. Build the project:
+2. Publish to a standalone, self-contained single-file `.exe`:
    ```bash
-   dotnet build -c Release
-   ```
-3. Publish to a single standalone executable:
-   ```bash
-   dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained false -o ./
+   dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./
    ```
 
 ---
@@ -92,7 +89,7 @@ SpotifyOverlay.exe
 
 ```
 SpotifyOverlay/
-├── SpotifyOverlay.exe              # Standalone compiled application
+├── SpotifyOverlay.exe              # Standalone portable application
 ├── SpotifyOverlay.csproj           # .NET 9 WPF project file
 ├── App.xaml / App.xaml.cs          # Application entry point
 │
