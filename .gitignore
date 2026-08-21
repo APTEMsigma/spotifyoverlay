@@ -1,0 +1,26 @@
+# Build & Output Folders
+bin/
+obj/
+publish/
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio / Rider / IDE Cache
+.vs/
+.idea/
+.vscode/
+
+# Logs & Temporary Files
+*.log
+*.tmp
+*.temp
+Thumbs.db
+Desktop.ini
+
+# AppData Local Settings
+settings.json
